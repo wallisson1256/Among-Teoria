@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vídeo de Tela Cheia com Botões</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link para o arquivo CSS -->
+</head>
+<body>
+    <div class="video-container">
+        <video id="video-inicial" autoplay muted loop>
+            <source src="Início.mp4" type="video/mp4"> <!-- Sem pasta -->
+            Seu navegador não suporta o formato de vídeo.
+        </video>
+
+        <!-- Botão GIF -->
+        <img src="botao.gif" alt="Botão Interativo" class="gif-button" onclick="showVideoSequence();">
+    </div>
+
+    <!-- Sequência de vídeos -->
+    <div id="video-sequence" class="video-sequence">
+        <video id="video-sequencia" autoplay muted loop>
+            <source src="video1.mp4" type="video/mp4"> <!-- Sem pasta -->
+        </video>
+        
+        <!-- Botão "Anterior" no lado esquerdo -->
+        <button class="previous-button" onclick="previousVideo();">
+            <img src="among-us-iconvoltar.png" alt="Previous"> Anterior
+        </button>
+
+        <!-- Botão "Próximo" no lado direito -->
+        <button class="next-button" onclick="nextVideo();">
+            <img src="among-us-icon.png" alt="Next"> Próximo
+        </button>
+    </div>
+
+    <script>
+        let currentVideoIndex = 0; // Inicializa o índice do vídeo
+        const videos = [
+            'video1.mp4',  // Vídeo 1
+            'video2.mp4',  // Vídeo 2
+            'video3.mp4'   // Vídeo 3
+        ];
+
+        // Função para iniciar a sequência de vídeos
+        function showVideoSequence() {
+            // Esconde o vídeo inicial e o botão GIF
+            document.querySelector('.video-container').style.display = 'none'; 
+            
+            // Exibe a sequência de vídeos
+            const videoSequence = document.getElementById('video-sequence');
+            videoSequence.style.display = 'block'; 
+            
+            // Atualiza o src do vídeo com o primeiro vídeo da sequência
+            document.getElementById('video-sequencia').src = videos[currentVideoIndex];
+        }
+
+        // Função para ir para o próximo vídeo
+        function nextVideo() {
+            currentVideoIndex++;
+            if (currentVideoIndex >= videos.length) {
+                currentVideoIndex = 0; // Volta ao primeiro vídeo quando a sequência terminar
+            }
+
+            // Atualiza o vídeo com o próximo da sequência
+            const videoElement = document.getElementById('video-sequencia');
+            videoElement.src = videos[currentVideoIndex]; 
+            videoElement.play(); // Reproduz o novo vídeo imediatamente
+        }
+
+        // Função para ir para o vídeo anterior
+        function previousVideo() {
+            currentVideoIndex--;
+            if (currentVideoIndex < 0) {
+                currentVideoIndex = videos.length - 1; // Vai para o último vídeo quando estiver no início
+            }
+
+            // Atualiza o vídeo com o anterior
+            const videoElement = document.getElementById('video-sequencia');
+            videoElement.src = videos[currentVideoIndex]; 
+            videoElement.play(); // Reproduz o novo vídeo imediatamente
+        }
+    </script>
+</body>
+</html>

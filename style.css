@@ -1,0 +1,138 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Estilo para o botão */
+.gif-button {
+    position: absolute;
+    top: calc(50% + 150px); /* Ajuste vertical */
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 30%; /* Tamanho ajustado */
+    height: auto;
+    cursor: pointer;
+}
+
+/* Estilo ao passar o mouse (aumento do botão) */
+.gif-button:hover {
+    transform: translate(-50%, -50%) scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    .gif-button {
+        width: 50%; /* Tamanho maior em dispositivos móveis */
+        max-width: 180px; /* Máximo ajustado para telas menores */
+        top: calc(50% + 120px); /* Ajuste da posição */
+    }
+}
+
+/* Estilo para a sequência de vídeos */
+.video-sequence {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+    background-color: black;
+}
+
+.video-sequence video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+/* Estilos para o botão "Próximo" */
+.next-button {
+    position: absolute;
+    bottom: 50px; /* Ajuste a posição conforme necessário */
+    right: 10px; /* Coloca o botão no lado direito */
+    background-color: #ff0000; /* Cor de fundo personalizada (vermelho Among Us) */
+    color: white; /* Cor da fonte */
+    font-size: 24px; /* Tamanho da fonte */
+    padding: 20px 40px; /* Tamanho do botão */
+    border: none;
+    border-radius: 50px; /* Botão arredondado */
+    cursor: pointer;
+    z-index: 3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras */
+    transition: background-color 0.3s, transform 0.3s; /* Efeito de transição */
+}
+
+/* Estilo ao passar o mouse no botão "Próximo" */
+.next-button:hover {
+    background-color: #ff6347; /* Cor do botão ao passar o mouse */
+    transform: scale(1.1); /* Aumento de tamanho */
+}
+
+/* Estilo ao clicar no botão "Próximo" */
+.next-button:active {
+    transform: scale(0.9); /* Efeito ao clicar */
+}
+
+/* Estilos para o botão "Anterior" */
+.previous-button {
+    position: absolute;
+    bottom: 50px; /* Ajuste a posição conforme necessário */
+    left: 10px; /* Coloca o botão no lado esquerdo */
+    background-color: #0000ff; /* Cor de fundo personalizada (azul Among Us) */
+    color: white; /* Cor da fonte */
+    font-size: 24px; /* Tamanho da fonte */
+    padding: 20px 40px; /* Tamanho do botão */
+    border: none;
+    border-radius: 50px; /* Botão arredondado */
+    cursor: pointer;
+    z-index: 3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombras */
+    transition: background-color 0.3s, transform 0.3s; /* Efeito de transição */
+}
+
+/* Estilo ao passar o mouse no botão "Anterior" */
+.previous-button:hover {
+    background-color: #4682b4; /* Cor do botão ao passar o mouse */
+    transform: scale(1.1); /* Aumento de tamanho */
+}
+
+/* Estilo ao clicar no botão "Anterior" */
+.previous-button:active {
+    transform: scale(0.9); /* Efeito ao clicar */
+}
+
+/* Estilo para as imagens nos botões */
+.next-button img, .previous-button img {
+    width: 50px; /* Ajuste do tamanho da imagem do botão */
+    height: 50px; /* Garantindo que a altura seja a mesma da largura */
+}
